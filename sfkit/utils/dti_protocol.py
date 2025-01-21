@@ -182,5 +182,7 @@ def process_output_files(role: str, demo: bool) -> None:
     )
     if send_results == "Yes":
         for data_type in ("train", "test"):
-            with open(f"{data_path}/roc_{data_type}.png", "rb") as file:
-                website_send_file(file, f"roc_{data_type}.png")
+            with open(f"{data_path}/roc_{data_type}.png", "rb") as f:
+                website_send_file(f, f"roc_{data_type}.png")
+            with open(f"{data_path}/pr_{data_type}.png", "rb") as f:
+                website_send_file(f, f"pr_{data_type}.png")
