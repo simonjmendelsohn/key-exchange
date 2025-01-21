@@ -165,10 +165,9 @@ def start_dti(role: str, demo: bool) -> None:
 def process_output_files(role: str, demo: bool) -> None:
     cwd = os.getcwd()
     os.chdir(f"{constants.EXECUTABLES_PREFIX}secure-dti")
-    evaluate_script = f"{constants.EXECUTABLES_PREFIX}secure-dti/bin/evaluate.py"
     data_path = _get_data_path(role)
     run_command(
-        ["python3", evaluate_script, data_path],
+        ["python3", "bin/evaluate.py", data_path],
         fail_message="Failed to evaluate DTI results",
     )
     os.chdir(cwd)
