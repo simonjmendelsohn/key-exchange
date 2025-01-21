@@ -181,6 +181,5 @@ def process_output_files(role: str, demo: bool) -> None:
         .get("value")
     )
     if send_results == "Yes":
-        for curve in ("roc", "pr"):
-            with open(f"{data_path}/{curve}_test.png", "rb") as f:
-                website_send_file(f, f"{curve}_test.png")
+        with open(f"{data_path}/roc_pr_test.png", "rb") as f:
+            website_send_file(f, f"roc_pr_test.png")
