@@ -119,7 +119,7 @@ def start_datasharing(role: str, demo: bool) -> None:
         command += ["proxychains", "-f", proxychains_conf]
 
     command += ["bin/ShareData", role, _get_par_path(role, demo)]
-    if role == "3":
+    if int(role) > 0:
         command.append(os.path.join(_get_data_path(role), ""))
 
     os.chdir(f"{constants.EXECUTABLES_PREFIX}secure-dti/mpc/code")
@@ -149,9 +149,8 @@ def start_dti(role: str, demo: bool) -> None:
 
     command += ["bin/TrainSecureDTI", role, _get_par_path(role, demo)]
 
-    if int(role) < 3:
-        os.chdir(f"{constants.EXECUTABLES_PREFIX}secure-dti/mpc/code")
-        run_command(command, fail_message="Failed Secure-DTI protocol")
+    os.chdir(f"{constants.EXECUTABLES_PREFIX}secure-dti/mpc/code")
+    run_command(command, fail_message="Failed Secure-DTI protocol")
     os.chdir(cwd)
 
     print("\n\n Finished DTI \n\n")
