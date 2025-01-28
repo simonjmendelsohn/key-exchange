@@ -111,7 +111,7 @@ WORKDIR /build
 FROM cpp AS secure-dti
 
 RUN git clone --depth 1 -b cp-only https://github.com/hcholab/secure-dti . && \
-    git checkout 63b5546 && \
+    git checkout 90310ea && \
     rm -rf .git
 
 WORKDIR /build/mpc/code
