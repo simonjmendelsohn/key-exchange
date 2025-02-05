@@ -119,7 +119,7 @@ def start_datasharing(role: str, demo: bool) -> None:
         command += ["proxychains", "-f", proxychains_conf]
 
     command += ["bin/ShareData", role, _get_par_path(role, demo)]
-    if int(role) > 0:
+    if int(role):
         command.append(os.path.join(_get_data_path(role), ""))
 
     os.chdir(f"{constants.EXECUTABLES_PREFIX}secure-dti/mpc/code")
@@ -155,7 +155,7 @@ def start_dti(role: str, demo: bool) -> None:
 
     print("\n\n Finished DTI \n\n")
 
-    if role == "1":
+    if int(role):
         process_output_files(role, demo)
 
     update_firestore("update_firestore::status=Finished protocol!")
