@@ -166,7 +166,7 @@ def process_output_files(role: str, demo: bool) -> None:
     os.chdir(f"{constants.EXECUTABLES_PREFIX}secure-dti")
     data_path = _get_data_path(role)
     run_command(
-        ["python3", "bin/evaluate.py", data_path],
+        ["python3", "bin/evaluate.py", data_path, role],
         fail_message="Failed to evaluate DTI results",
     )
     os.chdir(cwd)
@@ -180,6 +180,6 @@ def process_output_files(role: str, demo: bool) -> None:
         .get("value")
     )
     if send_results == "Yes":
-        fname = f"roc_pr_P{role}test.png"
+        fname = f"roc_pr.png"
         with open(f"{data_path}/{fname}", "rb") as f:
             website_send_file(f, fname)
